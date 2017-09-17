@@ -1,0 +1,6 @@
+[package]
+name = "memoizer"
+version = "0.1.0"
+authors = ["Ankit Goyal <angoyal@linkedin.com>"]
+
+[dependencies]
