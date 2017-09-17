@@ -29,7 +29,6 @@ impl Config {
 
         Ok(Config { filename, query })
     }
-
 }
 
 pub fn search<'a>(query: &'a str, contents: &'a str) -> Vec<&'a str> {
@@ -38,7 +37,6 @@ pub fn search<'a>(query: &'a str, contents: &'a str) -> Vec<&'a str> {
         if line.contains(query) {
             results.push(line);
         }
-    
     }
     results
 }
@@ -56,6 +54,18 @@ Rust:
 safe, fast, productive
 Pick three. ";
         assert_eq!(vec!("safe, fast, productive"), search(query, contents));
+    }
+
+    #[test]
+    fn case_insensitive() {
+        let query = "duct";
+        let contents = "
+Rust: 
+safe, fast, productive
+Pick three.
+Trust me";
+        assert_eq!(vec!["Rust:", "Trust me"], search(query, contents));
+    
     }
 
 }
